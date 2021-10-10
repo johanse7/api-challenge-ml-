@@ -2,6 +2,7 @@ import { axiosInstance } from "../config/configAxios"
 import configEnv from "../config/configEnv"
 import { FILTER_CATEGORY } from "../helpers/const"
 import { getDecimals } from "../helpers/utils"
+import { ICategory } from "../interfaces/ICategory"
 import { IvalueFilter } from "../interfaces/IFilterService"
 import { IProduct, IProductDetailService } from "../interfaces/IProduct"
 import { IProductDescription } from "../interfaces/IProductDescription"
@@ -60,6 +61,11 @@ export const getProductDetailById = async (id: string): Promise<IResponseProduct
 
   const [detail, productDescription] = await promeseServicesDetail
 
+  let categories: Array<string> = []
+  if (detail.data.category_id) {
+    categories = await getCategoriesByProduct(detail.data.category_id)
+  }
+
   return {
     author: {
       name: configEnv.authorName,
@@ -78,6 +84,14 @@ export const getProductDetailById = async (id: string): Promise<IResponseProduct
       },
       sold_quantity: detail.data.sold_quantity,
       description: productDescription.data.plain_text,
+      categories,
     },
   }
+}
+
+export const getCategoriesByProduct = async (categoryId: string): Promise<Array<string>> => {
+  const { data: categoriesProduct } = await axiosInstance.get<ICategory>(
+    `/categories/${categoryId}/`,
+  )
+  return categoriesProduct.error ? [] : categoriesProduct.path_from_root.map(({ name }) => name)
 }

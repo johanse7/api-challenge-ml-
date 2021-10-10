@@ -17,6 +17,7 @@ export interface IProduct {
 export interface IProductDetail extends Omit<IProduct, "state_name"> {
   sold_quantity: number
   description: string
+  categories: Array<string>
 }
 
 export interface IProducService {
@@ -37,6 +38,7 @@ export interface IProductDetailService {
   id: string
   title: string
   price: number
+  category_id: string
   currency_id: string
   pictures: Array<IPictureService>
   sold_quantity: number
