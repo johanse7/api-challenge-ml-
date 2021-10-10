@@ -5,10 +5,7 @@
     "target": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist",
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "preserveConstEnums": true
+    "outDir": "dist"
   },
   "lib": ["es2015"]
 }

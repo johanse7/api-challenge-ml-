@@ -2,10 +2,10 @@
   "name": "api-challenge-ml",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev index.ts",
-    "start": "node dist/index.js"
+    "start": "tsc -p ."
   },
   "keywords": [],
   "author": "",
