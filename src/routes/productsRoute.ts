@@ -6,7 +6,7 @@ export const productsRoute = (app: Express) => {
   const router = express.Router()
   app.use("/api", router)
 
-  router.get("/items/:q", async (req, res, next) => {
+  router.get("/items", async (req: express.Request, res, next) => {
     const { q } = req.params
 
     try {
@@ -20,7 +20,7 @@ export const productsRoute = (app: Express) => {
     }
   })
 
-  router.get("/item/:id", async (req, res, next) => {
+  router.get("/items/:id", async (req, res, next) => {
     const { id } = req.params
     try {
       const productDetail = await getProductDetailById(id)
