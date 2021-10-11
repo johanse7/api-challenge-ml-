@@ -15,7 +15,11 @@ import {
 export const getProductsByKeyWordSearch = async (search: string): Promise<IResponseProductList> => {
   const {
     data: { results, filters },
-  } = await axiosInstance.get<IResponseServiceProducts>(`/sites/MLA/search?q=${search}`)
+  } = await axiosInstance.get<IResponseServiceProducts>(`/sites/MLA/search`, {
+    params: {
+      q: search,
+    },
+  })
 
   const products: Array<IProduct> = results.map<IProduct>(
     ({ id, title, currency_id, price, address, condition, shipping, thumbnail }) => {
