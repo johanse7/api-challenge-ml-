@@ -1,13 +1,14 @@
 import express, { Express } from "express"
 import { TransactionCodeEnum } from "../enums/CommonEnum"
+import { IQueryParamsItems } from "../interfaces/IQueyParams"
 import { getProductDetailById, getProductsByKeyWordSearch } from "../services/productService"
 
 export const productsRoute = (app: Express) => {
   const router = express.Router()
   app.use("/api", router)
 
-  router.get("/items", async (req: express.Request, res, next) => {
-    const { q } = req.params
+  router.get("/items", async (req: express.Request<{}, {}, {}, IQueryParamsItems>, res, next) => {
+    const { q } = req.query
 
     try {
       const dataProduct = await getProductsByKeyWordSearch(q)
