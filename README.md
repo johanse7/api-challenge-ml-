@@ -8,7 +8,7 @@ Node.js and Typescript
 Es necesario agregar las variables de entorno en un archivo (.env) en la raiz del proyecto.
 
 ```
-PORT=3000
+PORT=
 URL_BASE_API_ML=
 AUTHOR_NAME=
 AUTHOR_LASTNAME=
@@ -32,5 +32,5 @@ npm run dev
 ```
 
 ```
-url site: https://keen-almeida-4ee8e6.netlify.app/
+url deplay service vercel: https://api-challenge-ml.vercel.app
 ```
